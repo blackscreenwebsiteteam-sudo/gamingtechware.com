@@ -1,0 +1,53 @@
+<% if (pagination && pagination.totalPages > 1) { %>
+  <%
+    const currentPage = pagination.page;
+    const totalPages = pagination.totalPages;
+    const basePath = pagination.basePath || '/';
+    const pageParam = pagination.pageParam || 'page';
+    const windowSize = 2;
+
+    function pageLink(page) {
+      if (page <= 1) {
+        return basePath;
+      }
+      const separator = basePath.includes('?') ? '&' : '?';
+      return `${basePath}${separator}${pageParam}=${page}`;
+    }
+
+    let startPage = Math.max(1, currentPage - windowSize);
+    let endPage = Math.min(totalPages, currentPage + windowSize);
+    const visibleSpan = windowSize * 2;
+
+    if (endPage - startPage < visibleSpan) {
+      startPage = Math.max(1, endPage - visibleSpan);
+      endPage = Math.min(totalPages, startPage + visibleSpan);
+    }
+  %>
+  <nav class="pagination" aria-label="Pagination">
+    <% if (pagination.hasPrevious) { %>
+      <a class="page-link prev" href="<%= pageLink(currentPage - 1) %>">Previous</a>
+    <% } %>
+    <% if (startPage > 1) { %>
+      <a class="page-link" href="<%= pageLink(1) %>">1</a>
+      <% if (startPage > 2) { %>
+        <span class="page-link ellipsis" aria-hidden="true">…</span>
+      <% } %>
+    <% } %>
+    <% for (let number = startPage; number <= endPage; number++) { %>
+      <% if (number === currentPage) { %>
+        <span class="page-link current" aria-current="page"><%= number %></span>
+      <% } else { %>
+        <a class="page-link" href="<%= pageLink(number) %>"><%= number %></a>
+      <% } %>
+    <% } %>
+    <% if (endPage < totalPages) { %>
+      <% if (endPage < totalPages - 1) { %>
+        <span class="page-link ellipsis" aria-hidden="true">…</span>
+      <% } %>
+      <a class="page-link" href="<%= pageLink(totalPages) %>"><%= totalPages %></a>
+    <% } %>
+    <% if (pagination.hasNext) { %>
+      <a class="page-link next" href="<%= pageLink(currentPage + 1) %>">Next</a>
+    <% } %>
+  </nav>
+<% } %>

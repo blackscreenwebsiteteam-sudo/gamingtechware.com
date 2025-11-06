@@ -1,0 +1,30 @@
+    <header class="site-header">
+      <div class="container">
+        <%
+          const brandLabelRaw = (siteName || 'gamingtechware.com').replace(/\.com$/i, '');
+          const brandTransformed = brandLabelRaw
+            .replace(/[-_]+/g, ' ')
+            .replace(/([a-z])([A-Z])/g, '$1 $2')
+            .trim();
+          const brandLabel = /gamingtechware/i.test(brandTransformed)
+            ? brandTransformed.replace(/gamingtechware/gi, 'gaming tech news')
+            : brandTransformed;
+        %>
+        <a class="brand" href="/"><%= brandLabel %></a>
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <ul>
+            <% 
+              const menuCategories = (primaryCategories && primaryCategories.length
+                ? primaryCategories
+                : (categories || [])
+              ).slice(0, 4);
+              menuCategories.forEach(function (category) { 
+            %>
+              <li><a href="/category/<%= category.slug %>"><%= category.name %></a></li>
+            <% }); %>
+              <li class="nav-rss-feed"><a href="<%= feedUrl %>" target="_blank" rel="noopener">RSS Feed</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
