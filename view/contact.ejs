@@ -1,0 +1,36 @@
+<%- include('partials/head', { pageTitle: pageTitle || 'Contact' }) %>
+<%- include('partials/header', { categories }) %>
+      <section class="info-page">
+        <div class="container">
+          <h1>Contact Gaming Tech Ware</h1>
+          <p class="lead">
+            Have a question about our coverage or spotted an update we should make? Reach out through any of the channels below.
+          </p>
+          <div class="info-grid">
+            <section class="info-section">
+              <h2>Email</h2>
+              <p>
+                Editorial tips, corrections, and partnership requests: <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a>
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>Social</h2>
+              <ul class="social-links">
+                <% if (contactTwitter) { %>
+                  <li><a href="<%= contactTwitter %>" target="_blank" rel="noopener">Twitter / X</a></li>
+                <% } %>
+                <% if (contactLinkedIn) { %>
+                  <li><a href="<%= contactLinkedIn %>" target="_blank" rel="noopener">LinkedIn</a></li>
+                <% } %>
+              </ul>
+            </section>
+            <section class="info-section">
+              <h2>Response Time</h2>
+              <p>
+                We review new messages on weekdays and aim to respond within two business days. Time-sensitive tips should include a phone or messaging contact so we can follow up quickly.
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched }) %>

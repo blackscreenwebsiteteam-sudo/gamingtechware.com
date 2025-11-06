@@ -1,0 +1,49 @@
+<%- include('partials/head', { pageTitle: pageTitle || 'Terms of Use' }) %>
+<%- include('partials/header', { categories }) %>
+      <section class="info-page">
+        <div class="container">
+          <h1>Terms of Use</h1>
+          <p class="lead">
+            These terms govern how you may access and use Gaming Tech Ware. By reading or sharing our articles, you agree to follow the rules outlined below.
+          </p>
+          <div class="info-grid">
+            <section class="info-section">
+              <h2>Acceptable Use</h2>
+              <ul>
+                <li>Do not disrupt site performance, attempt unauthorized access, or introduce malicious code.</li>
+                <li>You may link to our stories or quote short excerpts with attribution. Republishing full articles requires written permission.</li>
+                <li>Comments or emails sent to us must avoid harassment, hate speech, and spam.</li>
+              </ul>
+            </section>
+            <section class="info-section">
+              <h2>Intellectual Property</h2>
+              <p>
+                All original text, design, and branding elements on Gaming Tech Ware belong to the site owners. Third-party trademarks and screenshots remain the property of their respective holders and are used for informational purposes.
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>Disclaimer</h2>
+              <p>
+                We strive for accuracy but cannot guarantee that every article is free from errors. Content is provided for informational purposes only and should not be considered financial, legal, or investment advice.
+              </p>
+              <p>
+                We may include outbound links to partner sites or sources. Gaming Tech Ware is not responsible for the content or privacy practices of external websites.
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>Changes to These Terms</h2>
+              <p>
+                We may update these terms from time to time. Continued use of the site after a revision becomes effective means you accept the updated terms. Material updates will be highlighted with a notice at the top of this page.
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>Contact</h2>
+              <p>
+                Questions about these terms can be directed to <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a>.
+              </p>
+            </section>
+          </div>
+          <p class="info-meta">Last updated: <%= new Date().toLocaleDateString('en-US', { dateStyle: 'long' }) %></p>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched }) %>

@@ -1,0 +1,43 @@
+<%- include('partials/head', { pageTitle: article.title }) %>
+<%- include('partials/header', { categories }) %>
+      <article class="article-detail">
+        <div class="container">
+          <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <% if (article.categories && article.categories.length > 0) { 
+                article.categories.slice(0, 3).forEach(function (category, index) { %>
+              <span aria-hidden="true">›</span>
+              <a href="/category/<%= category.slug %>"><%= category.name %></a>
+            <% }); } %>
+          </nav>
+          <h1><%= article.title %></h1>
+          <p class="meta">
+            <span><%= article.publishedAt ? new Date(article.publishedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short'}) : 'Recently updated' %></span>
+            <span>by <a href="/editorial-team">Editorial team</a></span>
+          </p>
+          <div class="article-body">
+            <%
+              var bodyParagraphs = Array.isArray(article.paragraphs) && article.paragraphs.length
+                ? article.paragraphs
+                : (article.content && article.content.length ? article.content : article.originalContent || '')
+                    .split(/\n{2,}|\r\n\r\n/)
+                    .map(function (text) { return text.trim(); })
+                    .filter(function (text) { return text.length; });
+              if (bodyParagraphs.length === 0 && article.content) {
+                bodyParagraphs.push(article.content);
+              }
+              bodyParagraphs.forEach(function (paragraph) {
+            %>
+              <p><%= paragraph %></p>
+            <% }); %>
+          </div>
+          <% if (article.categories && article.categories.length > 0) { %>
+            <ul class="category-tags">
+              <% article.categories.slice(0, 4).forEach(function (category) { %>
+                <li><a href="/category/<%= category.slug %>"><%= category.name %></a></li>
+              <% }); %>
+            </ul>
+          <% } %>
+        </div>
+      </article>
+<%- include('partials/footer', { lastFetched }) %>

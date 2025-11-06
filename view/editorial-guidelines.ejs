@@ -1,0 +1,48 @@
+<%- include('partials/head', { pageTitle: pageTitle || 'Editorial Guidelines' }) %>
+<%- include('partials/header', { categories }) %>
+      <section class="info-page">
+        <div class="container">
+          <h1>Editorial Guidelines</h1>
+          <p class="lead">
+            Our guidelines ensure the stories you read on Gaming Tech Ware are accurate, current, and grounded in verifiable reporting.
+          </p>
+          <div class="info-grid">
+            <section class="info-section">
+              <h2>Source Standards</h2>
+              <p>
+                We rely on primary sources such as publisher announcements, regulatory filings, transcripts, and interviews. Secondary sources are cited only when they add new reporting or context unavailable elsewhere.
+              </p>
+              <ul>
+                <li>Every claim must trace back to a publicly accessible document or on-the-record statement.</li>
+                <li>Anonymous or speculative reports are labelled clearly and treated with caution.</li>
+                <li>Rumors are excluded unless the originating outlet has a proven track record and we can corroborate key details.</li>
+              </ul>
+            </section>
+            <section class="info-section">
+              <h2>Accuracy Checks</h2>
+              <p>
+                Before publishing, editors confirm names, dates, units of measurement, currencies, and geographic references. We maintain internal notes for each article outlining the evidence supporting major claims.
+              </p>
+              <p>
+                If we cannot validate a data point, we omit it or note that the information is unverified. We do not knowingly publish promotional copy or marketing language without context.
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>Updates &amp; Corrections</h2>
+              <p>
+                When facts change after publication, we update the article as soon as new primary reporting is available. Substantive corrections add a note at the bottom of the story explaining what changed and when.
+              </p>
+              <p>
+                Readers can request a correction or clarification by emailing <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a>. We review each request within two business days.
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>AI &amp; Automation Policy</h2>
+              <p>
+                Automated tools help us gather leads and draft copy, but every published article is edited by a human. Editors verify facts, adjust tone for clarity, and ensure the story reflects our guidelines before it goes live.
+              </p>
+            </section>
+          </div>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched }) %>

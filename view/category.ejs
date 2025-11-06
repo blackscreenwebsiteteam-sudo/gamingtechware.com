@@ -1,0 +1,37 @@
+<%- include('partials/head', { pageTitle: category.name + ' News' }) %>
+<%- include('partials/header', { categories }) %>
+      <section class="breadcrumb">
+        <div class="container">
+          <a href="/">Home</a>
+          <span aria-hidden="true">›</span>
+          <span><%= category.name %></span>
+        </div>
+      </section>
+      <section class="news-feed">
+        <div class="container">
+          <h1><%= category.name %> Headlines</h1>
+          <% if (!articles || articles.length === 0) { %>
+            <p class="empty-state">No stories have landed in this category yet. Try another topic from the menu.</p>
+          <% } else { %>
+            <div class="grid">
+              <% (articles || []).forEach(function(article) { %>
+                <article class="card">
+                  <h2><a href="/news/<%= article.slug %>"><%= article.title %></a></h2>
+                  <p class="meta">
+                    <span><%= article.publishedAt ? new Date(article.publishedAt).toLocaleString('en-US', { dateStyle: 'medium'}) : 'Recently updated' %></span>
+                    <span>by <a href="/editorial-team">Editorial team</a></span>
+                  </p>
+                  <div class="excerpt">
+                    <p><%= article.excerpt || '' %></p>
+                    <p class="read-more-wrapper">
+                      <a class="read-more" href="/news/<%= article.slug %>">Read more</a>
+                    </p>
+                  </div>
+                </article>
+              <% }); %>
+            </div>
+            <%- include('partials/pagination', { pagination }) %>
+          <% } %>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched }) %>

@@ -1,0 +1,51 @@
+<%- include('partials/head', { pageTitle: pageTitle || 'Privacy Policy' }) %>
+<%- include('partials/header', { categories }) %>
+      <section class="info-page">
+        <div class="container">
+          <h1>Privacy Policy</h1>
+          <p class="lead">
+            We collect the minimum information necessary to operate Gaming Tech Ware and measure readership trends. This policy outlines what data we gather, how we use it, and the choices you have.
+          </p>
+          <div class="info-grid">
+            <section class="info-section">
+              <h2>Information We Collect</h2>
+              <ul>
+                <li>
+                  <strong>Log data:</strong> Our hosting provider records standard server logs (IP address, browser type, referring URL, and timestamp) to diagnose issues and combat abuse.
+                </li>
+                <li>
+                  <strong>Analytics:</strong> Anonymous traffic analytics help us understand which stories resonate. We do not sell or share individualized browsing data.
+                </li>
+                <li>
+                  <strong>Messages:</strong> Emails sent to our contact address are stored so we can follow up on requests and maintain a record of correspondence.
+                </li>
+              </ul>
+            </section>
+            <section class="info-section">
+              <h2>How We Use Data</h2>
+              <p>
+                We use the information above to keep the site available, improve story selection, and respond to reader feedback. We do not run targeted advertising or use behavioral profiles.
+              </p>
+              <p>
+                Aggregated analytics may be shared internally to plan coverage or demonstrate audience reach to potential partners. These reports never include personal identifiers.
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>Data Retention &amp; Security</h2>
+              <p>
+                Hosting partners maintain infrastructure-level security and access controls. We retain server logs for up to 90 days. Reader emails are stored until a request is resolved or for up to one year, whichever comes first.
+              </p>
+            </section>
+            <section class="info-section">
+              <h2>Your Choices</h2>
+              <ul>
+                <li>You may request deletion of prior correspondence by emailing <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a>.</li>
+                <li>Browser-level tools and extensions can limit analytics cookies or tracking scripts.</li>
+                <li>If we significantly change this policy, we will update the “Last updated” date and summarize the changes at the top of this page.</li>
+              </ul>
+              <p class="info-meta">Last updated: <%= new Date().toLocaleDateString('en-US', { dateStyle: 'long' }) %></p>
+            </section>
+          </div>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched }) %>

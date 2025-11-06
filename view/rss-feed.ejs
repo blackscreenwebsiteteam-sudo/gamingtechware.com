@@ -1,0 +1,35 @@
+<%- include('partials/head', { pageTitle: 'GamingTechWare RSS Feed' }) %>
+<%- include('partials/header', { categories }) %>
+      <section class="hero rss-hero">
+        <div class="container">
+          <h1>GamingTechWare RSS Feed</h1>
+          <p><%= siteDescription %></p>
+          <div class="rss-actions">
+            <a class="button" href="<%= absoluteFeedUrl %>" target="_blank" rel="noopener">Open RSS XML</a>
+            <code class="rss-url"><%= absoluteFeedUrl %></code>
+          </div>
+        </div>
+      </section>
+      <section class="rss-latest">
+        <div class="container">
+          <h2>Latest Stories in the Feed</h2>
+          <% if (!articles || articles.length === 0) { %>
+            <p class="empty-state">The feed is still syncing. Check back shortly.</p>
+          <% } else { %>
+            <ul class="rss-article-list">
+              <% articles.slice(0, 12).forEach(function (article) { %>
+                <li>
+                  <a href="/news/<%= article.slug %>"><%= article.title %></a>
+                  <span class="rss-meta">
+                    <%= article.publishedAt
+                      ? new Date(article.publishedAt).toLocaleString('en-US', { dateStyle: 'medium' })
+                      : 'Recently updated'
+                    %>
+                  </span>
+                </li>
+              <% }); %>
+            </ul>
+          <% } %>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched }) %>

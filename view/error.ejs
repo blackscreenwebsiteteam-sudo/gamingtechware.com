@@ -1,0 +1,10 @@
+<%- include('partials/head', { pageTitle: 'Error' }) %>
+<%- include('partials/header', { categories: [] }) %>
+      <section class="feedback">
+        <div class="container">
+          <h1>Something derailed.</h1>
+          <p><%= message || 'An unexpected issue occurred while loading the latest stories.' %></p>
+          <a class="button" href="/">Back to safety</a>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched: typeof lastFetched !== 'undefined' ? lastFetched : null }) %>

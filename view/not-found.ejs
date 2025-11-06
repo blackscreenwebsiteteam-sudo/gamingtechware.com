@@ -1,0 +1,10 @@
+<%- include('partials/head', { pageTitle: 'Not Found' }) %>
+<%- include('partials/header', { categories: [] }) %>
+      <section class="feedback">
+        <div class="container">
+          <h1>That page is off the tracks.</h1>
+          <p><%= message || 'We could not locate the page you requested.' %></p>
+          <a class="button" href="/">Return to the latest tech updates</a>
+        </div>
+      </section>
+<%- include('partials/footer', { lastFetched: typeof lastFetched !== 'undefined' ? lastFetched : null }) %>
